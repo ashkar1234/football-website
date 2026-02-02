@@ -11,8 +11,13 @@
     scroll-behavior: smooth;
 }
 
+html {
+    scroll-padding-top: 80px;
+}
+
 body {
     background-color: #000000;
+    padding-top: 80px;
 }
 
 .containerfluid {
@@ -28,7 +33,12 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    z-index: 1000;
     flex-wrap: wrap;
 }
 
@@ -87,7 +97,7 @@ body {
     display: none;
 }
 
-input:checked ~ .navBar {
+input:checked~.navBar {
     right: 0px;
 }
 
@@ -135,6 +145,35 @@ input:checked ~ .navBar {
     border: 1px solid #FFFFFF;
     padding: 6px 15px;
     background-color: transparent;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.aside button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.aside button:hover::before {
+    left: 100%;
+}
+
+.aside button:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #F81313, #FF6B6B);
+    border-color: #F81313;
+    box-shadow: 0 0 20px rgba(248, 19, 19, 0.8),
+        0 0 40px rgba(248, 19, 19, 0.4);
+    color: #FFFFFF;
+    font-weight: 600;
 }
 
 /* imgContainer */
@@ -203,6 +242,7 @@ input:checked ~ .navBar {
     left: 160px;
     top: 300px;
 }
+
 /* 2nd page */
 .second-section {
     position: relative;
@@ -353,7 +393,7 @@ input:checked ~ .navBar {
     text-align: center;
 }
 
-.detail-2 + p {
+.detail-2+p {
     position: absolute;
     top: 560px;
     left: 155px;
@@ -397,6 +437,7 @@ input:checked ~ .navBar {
     text-align: left;
     color: #FFFFFF;
 }
+
 /* page 3 */
 .shop-section {
     text-align: center;
@@ -404,14 +445,16 @@ input:checked ~ .navBar {
     color: white;
 }
 
-.shop-title, .league-title, .bracket-title {
+.shop-title,
+.league-title,
+.bracket-title {
     font-size: 32px;
     /* margin-bottom: 40px; */
 }
 
-.shop-title + img,
-.league-title + img,
-.bracket-title + img {
+.shop-title+img,
+.league-title+img,
+.bracket-title+img {
     margin-top: -35px;
 }
 
@@ -537,6 +580,7 @@ input:checked ~ .navBar {
 .challenges:hover {
     transform: rotate(360deg);
 }
+
 /* 4th page LEAGUE */
 .leagues-section {
     /* width: 90%; */
@@ -561,7 +605,7 @@ input:checked ~ .navBar {
     position: relative;
 }
 
-.leagues-section > img + h1 {
+.leagues-section>img+h1 {
     font-family: "Poly", serif;
     text-align: left;
     /* margin-bottom: 10px; */
@@ -602,7 +646,7 @@ input:checked ~ .navBar {
     font-weight: 500;
 }
 
-.match-info span + h3 > img {
+.match-info span+h3>img {
     height: 40px;
     width: 40px;
 }
@@ -758,6 +802,7 @@ input:checked ~ .navBar {
 
     @media screen and (max-width:500px) {}
 }
+
 /* center potion */
 @media screen and (max-width:768px) {
     .aside {
@@ -842,7 +887,7 @@ input:checked ~ .navBar {
         left: 240px !important;
     }
 
-    .detail-2 + p {
+    .detail-2+p {
         top: 555px !important;
         left: 150px !important;
     }
@@ -880,6 +925,7 @@ input:checked ~ .navBar {
         transform: scale(0.48);
     }
 }
+
 /* 5th page */
 .bracket-section {
     margin: auto;
@@ -889,24 +935,32 @@ input:checked ~ .navBar {
     margin-top: 50px;
     /* margin: 40px auto 80px; */
     color: #FFFFFF;
-    position: relative; /* ensure stacking context */
+    position: relative;
+    /* ensure stacking context */
     /* z-index: 99999; bring bracket above other sections */
-    margin-top: 20px; /* small separation to keep away from previous section */
-    clear: both; /* start below any floats */
-    overflow: visible; /* ensure children visible, don't clip */
-    isolation: isolate; /* create a new stacking context */
+    margin-top: 20px;
+    /* small separation to keep away from previous section */
+    clear: both;
+    /* start below any floats */
+    overflow: visible;
+    /* ensure children visible, don't clip */
+    isolation: isolate;
+    /* create a new stacking context */
 }
+
 .bracket-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.bracket-title img{
+
+.bracket-title img {
     margin-top: -10px;
-    width: 102px!important;
+    width: 102px !important;
     margin-bottom: 20px;
 }
+
 /* ================================
    GRID STRUCTURE (DESKTOP)
 ================================ */
@@ -995,6 +1049,7 @@ input:checked ~ .navBar {
    REMOVE ALL LINES BELOW 1100px
 ================================ */
 @media (max-width: 1100px) {
+
     .connect-to-final-left::after,
     .connect-to-final-right::after,
     .final-card::before,
@@ -1105,115 +1160,122 @@ input:checked ~ .navBar {
 
 /* Footer */
 .footer {
-  width: 100%;
-  background: #000;
-  color: #fff;
-  padding: 50px 5%;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    padding: 50px 5%;
 }
+
 .footer-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.footer-title img{
+
+.footer-title img {
     margin-top: -10px;
-    width: 102px!important;
+    width: 102px !important;
     margin-bottom: 40px;
 }
 
 
 .footer-container {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  gap: 40px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 40px;
 }
 
 /* LEFT SECTION */
 .logo-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .logo-box img {
-  width: 26px;
+    width: 26px;
     height: 26px;
 }
 
 .logo-box h1 {
-  font-size: 32px;
-  font-family: jsMath-cmbx10;
-  letter-spacing: 3px;
+    font-size: 32px;
+    font-family: jsMath-cmbx10;
+    letter-spacing: 3px;
 }
 
 .footer-desc {
-  margin: 20px 0;
-  line-height: 1.4;
-  max-width: 350px;
+    margin: 20px 0;
+    line-height: 1.4;
+    max-width: 350px;
 }
 
 .active {
-  margin-top: 15px;
-  font-weight: 600;
+    margin-top: 15px;
+    font-weight: 600;
 }
 
 .active span {
-  color: #2aff42;
+    color: #2aff42;
 }
 
 /* ICONS */
 .social-icons i {
-  font-size: 28px;
-  margin-right: 15px;
-  margin-top: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+    font-size: 28px;
+    margin-right: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 /* Colors */
 .social-icons .fa-x-twitter {
-  color: #ffffff; /* white */
+    color: #ffffff;
+    /* white */
 }
 
 .social-icons .fa-instagram {
-  color: #ff00aa; /* pink gradient look */
+    color: #ff00aa;
+    /* pink gradient look */
 }
 
 .social-icons .fa-telegram {
-  color: #00a8ff; /* telegram blue */
+    color: #00a8ff;
+    /* telegram blue */
 }
 
 .social-icons i:hover {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 /* QUICK LINK & SUPPORT */
 .footer-col h3 {
-  font-size: 22px;
-  margin-bottom: 15px;
+    font-size: 22px;
+    margin-bottom: 15px;
 }
 
 .footer-col ul li {
-  list-style: none;
-  margin: 10px 0;
-  opacity: 0.8;
+    list-style: none;
+    margin: 10px 0;
+    opacity: 0.8;
 }
 
 /* LIVE MATCH */
-.live-match{
+.live-match {
     position: relative;
 }
+
 .live-match h3 {
-  font-size: 22px;
-  margin-bottom: 15px;
+    font-size: 22px;
+    margin-bottom: 15px;
 }
 
 .match-img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 10px;
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
 }
+
 .match-img+img {
     position: absolute;
     top: 38.5%;
@@ -1222,41 +1284,44 @@ input:checked ~ .navBar {
     background-color: #000;
     border-radius: 50%;
 }
+
 .match-date {
-  font-size: 18px;
-  margin-top: 5px;
+    font-size: 18px;
+    margin-top: 5px;
 }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-  .footer-container {
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-  }
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
 }
 
 @media (max-width: 700px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-  }
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
 
-  .footer-title {
-    font-size: 32px;
-  }
+    .footer-title {
+        font-size: 32px;
+    }
 
-  .logo-text {
-    font-size: 26px;
-  }
+    .logo-text {
+        font-size: 26px;
+    }
 
-  .match-img {
-    width: 80%;
-  }
-  .match-img+img {
-    top: 40%;
-    left: 40%;
-  }
+    .match-img {
+        width: 80%;
+    }
+
+    .match-img+img {
+        top: 40%;
+        left: 40%;
+    }
 }
+
 ol,
 ul {
-  padding-left: 0px!important;
+    padding-left: 0px !important;
 }
